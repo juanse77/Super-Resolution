@@ -1,5 +1,5 @@
 # Super-resolución 4x:
-## 2.- Modelado y Entranamiento:
+## Modelado y Entranamiento:
 
 Ejercicio de curso para la asignatura de Computación Inteligente perteneciente al Máster Universitario en Sistemas Inteligentes y Aplicaciones Numéricas para la Ingeniería (MUSIANI) en el curso 2020/21, realizado por Juan Sebastián Ramírez Artiles.
 
