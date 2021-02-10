@@ -17,4 +17,4 @@ Se probaron una variedad de modelos diferentes. Se usaron kernels de 3x3, de 5x5
 
 En el proceso de entrenamiento se usaron gran variedad de combinaciones de tamaños de batches y de cantidad de épocas. Se empezó con tamaños de batch de 8, se fue subiendo hasta 16 y finalmente se dejó en 14, más de esta cantidad desborda la memoras de la GPU. En cuanto al número de épocas, se empezó con 20 iteraciones y se fue subiendo hasta la cantidad de 80. No obstante, al variar el learning rate se aceleró la convergencia, con lo que volví a la veinte iteraciones.
 
-Para finalizar, salvo el modelo para poder usarlo en el notebook [SR_restore_model.ipynb](SR_restore_model.ipynb) que se encargará de escalar las 75 imágenes de validación.
+Para finalizar, salvé el modelo para poder usarlo en el notebook [SR_restore_model.ipynb](SR_restore_model.ipynb) que se encargará de escalar las 75 imágenes de validación.
