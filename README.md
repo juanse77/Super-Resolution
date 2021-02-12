@@ -35,7 +35,7 @@ ngpu = 1
 beta1 = 0.5
 lr = 0.005
 bs = 150
-epochs = 20
+epochs = 40
 
 path_train_x = "faces/train_x/x8"
 path_train_y = "faces/train_y/x4"
@@ -131,34 +131,6 @@ imgs_train_dl = DataLoader(imgs_train, batch_size = bs, shuffle = True)
 imgs_valid_dl = DataLoader(imgs_valid, batch_size = bs, shuffle = True)
 ```
 
-
-```python
-iter_img = iter(imgs_train_dl)
-sample_batch = iter_img.next()
-print(sample_batch['img_x'][:,0].min())
-print(sample_batch['img_x'][:,0].max())
-print(sample_batch['img_x'][:,0].mean())
-
-print(sample_batch['img_x'][:,1].min())
-print(sample_batch['img_x'][:,1].max())
-print(sample_batch['img_x'][:,1].mean())
-
-print(sample_batch['img_x'][:,2].min())
-print(sample_batch['img_x'][:,2].max())
-print(sample_batch['img_x'][:,2].mean())
-```
-
-    tensor(-1.)
-    tensor(1.)
-    tensor(-0.1365)
-    tensor(-0.9765)
-    tensor(0.6784)
-    tensor(-0.0798)
-    tensor(-0.8980)
-    tensor(0.9765)
-    tensor(0.1079)
-    
-
 El dataset se dividió en 900 imágenes para entrenamiento y 100 imágenes para validación.
 
 
@@ -178,7 +150,7 @@ device = torch.device("cuda:0" if (torch.cuda.is_available() and ngpu > 0) else 
 
 Se probaron una variedad de modelos diferentes. Se usaron kernels de 3x3, de 5x5 y de 7x7, siendo estos últimos los que mejor resultados dieron. También se probaron diferentes configuraciones de red, añadiendo capas convolutivas y modificando las funciones de activación. Esta configuración resultó la más adecuada.
 
-En el proceso de entrenamiento se usaron gran variedad de combinaciones de tamaños de batches y de cantidad de épocas. Se empezó con tamaños de batch de 8, se fue subiendo hasta 150, dejando todavía 600 MB de espacio en GPU. En cuanto al número de épocas, se empezó con 20 iteraciones y se fue subiendo hasta la cantidad de 80. No obstante, al variar el learning rate se aceleró la convergencia, con lo que se bajó de nuevo a veinte iteraciones.
+En el proceso de entrenamiento se usaron gran variedad de combinaciones de tamaños de batches y de cantidad de épocas. Se empezó con tamaños de batch de 8, se fue subiendo hasta 150, dejando todavía 900 MB de espacio en GPU. En cuanto al número de épocas, se empezó con 10 iteraciones y se fue subiendo hasta la cantidad de 80. No obstante, al variar el learning rate se aceleró la convergencia, con lo que finalmente se bajó a 40 épocas.
 
 
 ```python
@@ -275,26 +247,46 @@ model, opt = get_model()
 fit(epochs, model, loss_func, opt, train_dl, valid_dl, val_losses)
 ```
 
-    0 0.030665109244485695
-    1 0.04924736792842547
-    2 0.03206302598118782
-    3 0.024939381207029026
-    4 0.022622141676644485
-    5 0.01977396011352539
-    6 0.018246205213169258
-    7 0.017312584755321343
-    8 0.016450663097202778
-    9 0.01575897028669715
-    10 0.015210130562384924
-    11 0.01476207577312986
-    12 0.014425783728559812
-    13 0.014133546501398087
-    14 0.013891078221301237
-    15 0.013675572505841652
-    16 0.013469154325624308
-    17 0.013281429496904215
-    18 0.01309831952676177
-    19 0.012930736877024174
+    0 0.08812722812096278
+    1 0.10354743773738544
+    2 0.058651002744833626
+    3 0.036882263918717705
+    4 0.024974679263929527
+    5 0.02253101362536351
+    6 0.022052778241535027
+    7 0.021063019211093586
+    8 0.01970785887291034
+    9 0.01839479338377714
+    10 0.017294599674642086
+    11 0.016480720601975918
+    12 0.01589130548139413
+    13 0.015438095356027285
+    14 0.015089683855573336
+    15 0.014802569368233284
+    16 0.014562463698287805
+    17 0.014345199180146059
+    18 0.014149376346419254
+    19 0.013973391925295195
+    20 0.013810239111383757
+    21 0.013660933046291271
+    22 0.013522836690147718
+    23 0.013395102694630623
+    24 0.013273888267576694
+    25 0.013162318306664625
+    26 0.013059380774696669
+    27 0.01295007454852263
+    28 0.012852918977538744
+    29 0.012755766976624727
+    30 0.012662380933761597
+    31 0.012572971327851215
+    32 0.012486283977826437
+    33 0.012400879679868618
+    34 0.0123174994563063
+    35 0.012237056934585175
+    36 0.012157548995067676
+    37 0.012079959735274315
+    38 0.012004718960573276
+    39 0.011930268257856369
     
 
 Se puede observar en el gráfico que la red aprende bien.
@@ -306,12 +298,12 @@ plt.show()
 ```
 
 
-![png](output_24_0.png)
+![png](output_23_0.png)
 
 
-Para finalizar, salvo el modelo para poder usarlo en el notebook [SR_Restore_Faces_Model.ipynb](SR_Restore_Faces_Model.md) que se encargará de escalar las 100 imágenes de validación. - Modelo entrenado: [SR_model_Faces_2.0.ml](SR_model_Faces_2.0.ml) -
+Para finalizar, salvo el modelo para poder usarlo en el notebook [SR_Restore_Faces_Model.ipynb](SR_Restore_Faces_Model.ipynb) que se encargará de escalar las 100 imágenes de validación. - Modelo entrenado [SR_model_Faces_4.0.ml](SR_model_Faces_4.0.ml) -
 
 
 ```python
-torch.save(model, "SR_model_Faces_2.0.ml")
+torch.save(model, "SR_model_Faces_4.0.ml")
 ```

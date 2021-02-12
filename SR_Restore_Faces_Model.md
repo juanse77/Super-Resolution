@@ -51,7 +51,7 @@ class SuperResolution(nn.Module):
 
 
 ```python
-model = torch.load("SR_model_Faces_2.0.ml")
+model = torch.load("SR_model_Faces_4.0.ml")
 model.eval()
 ```
 
@@ -211,25 +211,9 @@ plt.imshow(grid_img.permute(1, 2, 0))
 
 
 
-    <matplotlib.image.AxesImage at 0x1e70134c0c8>
+    <matplotlib.image.AxesImage at 0x1e18bc6c488>
 
 
 
 
 ![png](output_15_1.png)
-
-
-
-```javascript
-%%javascript
-Jupyter.notebook.session.delete();
-```
-
-
-    <IPython.core.display.Javascript object>
-
-
-
-```python
-
-```
