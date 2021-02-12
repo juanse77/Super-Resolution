@@ -130,34 +130,7 @@ imgs_valid = FacesDataset(path_valid_x, path_valid_y, transform = transform)
 imgs_train_dl = DataLoader(imgs_train, batch_size = bs, shuffle = True)
 imgs_valid_dl = DataLoader(imgs_valid, batch_size = bs, shuffle = True)
 ```
-
-
-```python
-iter_img = iter(imgs_train_dl)
-sample_batch = iter_img.next()
-print(sample_batch['img_x'][:,0].min())
-print(sample_batch['img_x'][:,0].max())
-print(sample_batch['img_x'][:,0].mean())
-
-print(sample_batch['img_x'][:,1].min())
-print(sample_batch['img_x'][:,1].max())
-print(sample_batch['img_x'][:,1].mean())
-
-print(sample_batch['img_x'][:,2].min())
-print(sample_batch['img_x'][:,2].max())
-print(sample_batch['img_x'][:,2].mean())
-```
-
-    tensor(-1.)
-    tensor(1.)
-    tensor(-0.1162)
-    tensor(-0.9765)
-    tensor(0.9294)
-    tensor(-0.0667)
-    tensor(-0.6392)
-    tensor(0.8980)
-    tensor(0.0919)
-    
+ 
 
 El dataset se dividió en 900 imágenes para entrenamiento y 100 imágenes para validación.
 
