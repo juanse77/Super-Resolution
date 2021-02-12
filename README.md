@@ -284,12 +284,3 @@ torch.save(model, "SR_model_Faces_2.0.ml")
 %%javascript
 Jupyter.notebook.session.delete();
 ```
-
-
-    <IPython.core.display.Javascript object>
-
-
-
-```python
-
-```

@@ -214,17 +214,3 @@ plt.imshow(grid_img.permute(1, 2, 0))
 ![png](output_15_1.png)
 
 
-
-```javascript
-%%javascript
-Jupyter.notebook.session.delete();
-```
-
-
-    <IPython.core.display.Javascript object>
-
-
-
-```python
-
-```
