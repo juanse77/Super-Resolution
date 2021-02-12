@@ -179,12 +179,7 @@ for xb in imgs_valid_dl:
     
     save_images(i, pil_imgs_sr)
     i += 1    
-```
-
-    C:\Anaconda3\.conda\envs'\torch_env\lib\site-packages\torch\nn\functional.py:3063: UserWarning: Default upsampling behavior when mode=bicubic is changed to align_corners=False since 0.4.0. Please specify align_corners=True if the old behavior is desired. See the documentation of nn.Upsample for details.
-      "See the documentation of nn.Upsample for details.".format(mode))
-    
-
+```   
 
 ```python
 transform = transforms.Compose([
