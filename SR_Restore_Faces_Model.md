@@ -51,7 +51,7 @@ class SuperResolution(nn.Module):
 
 
 ```python
-model = torch.load("SR_model_Faces_4.0.ml")
+model = torch.load("SR_model_Faces_5.0.ml")
 model.eval()
 ```
 
@@ -193,7 +193,7 @@ transform = transforms.Compose([
 ])
 
 pred_imgs_fd = FacesDataset(output_path, transform = transform)
-pred_imgs_dl = DataLoader(pred_imgs_fd, batch_size = 8)
+pred_imgs_dl = DataLoader(pred_imgs_fd, batch_size = 12)
 iter_pred_imgs = iter(pred_imgs_dl)
 imgs = iter_pred_imgs.next()
 ```
@@ -211,9 +211,20 @@ plt.imshow(grid_img.permute(1, 2, 0))
 
 
 
-    <matplotlib.image.AxesImage at 0x1e18bc6c488>
+    <matplotlib.image.AxesImage at 0x1b70cadb548>
 
 
 
 
 ![png](output_15_1.png)
+
+
+
+```javascript
+%%javascript
+Jupyter.notebook.session.delete();
+```
+
+
+    <IPython.core.display.Javascript object>
+
