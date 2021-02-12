@@ -301,7 +301,7 @@ plt.show()
 ![png](output_23_0.png)
 
 
-Para finalizar, salvo el modelo para poder usarlo en el notebook [SR_Restore_Faces_Model.ipynb](SR_Restore_Faces_Model.ipynb) que se encargará de escalar las 100 imágenes de validación. - Modelo entrenado [SR_model_Faces_4.0.ml](SR_model_Faces_4.0.ml) -
+Para finalizar, salvo el modelo para poder usarlo en el notebook [SR_Restore_Faces_Model.ipynb](SR_Restore_Faces_Model.md) que se encargará de escalar las 100 imágenes de validación. - Modelo entrenado [SR_model_Faces_4.0.ml](SR_model_Faces_4.0.ml) -
 
 
 ```python
