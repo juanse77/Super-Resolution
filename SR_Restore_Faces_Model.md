@@ -179,7 +179,12 @@ for xb in imgs_valid_dl:
     
     save_images(i, pil_imgs_sr)
     i += 1    
-```   
+```
+
+    C:\Anaconda3\.conda\envs'\torch_env\lib\site-packages\torch\nn\functional.py:3063: UserWarning: Default upsampling behavior when mode=bicubic is changed to align_corners=False since 0.4.0. Please specify align_corners=True if the old behavior is desired. See the documentation of nn.Upsample for details.
+      "See the documentation of nn.Upsample for details.".format(mode))
+    
+
 
 ```python
 transform = transforms.Compose([
@@ -206,7 +211,7 @@ plt.imshow(grid_img.permute(1, 2, 0))
 
 
 
-    <matplotlib.image.AxesImage at 0x1a71252e448>
+    <matplotlib.image.AxesImage at 0x1e70134c0c8>
 
 
 
@@ -214,3 +219,17 @@ plt.imshow(grid_img.permute(1, 2, 0))
 ![png](output_15_1.png)
 
 
+
+```javascript
+%%javascript
+Jupyter.notebook.session.delete();
+```
+
+
+    <IPython.core.display.Javascript object>
+
+
+
+```python
+
+```

@@ -35,7 +35,7 @@ ngpu = 1
 beta1 = 0.5
 lr = 0.005
 bs = 150
-epochs = 10
+epochs = 20
 
 path_train_x = "faces/train_x/x8"
 path_train_y = "faces/train_y/x4"
@@ -130,7 +130,34 @@ imgs_valid = FacesDataset(path_valid_x, path_valid_y, transform = transform)
 imgs_train_dl = DataLoader(imgs_train, batch_size = bs, shuffle = True)
 imgs_valid_dl = DataLoader(imgs_valid, batch_size = bs, shuffle = True)
 ```
- 
+
+
+```python
+iter_img = iter(imgs_train_dl)
+sample_batch = iter_img.next()
+print(sample_batch['img_x'][:,0].min())
+print(sample_batch['img_x'][:,0].max())
+print(sample_batch['img_x'][:,0].mean())
+
+print(sample_batch['img_x'][:,1].min())
+print(sample_batch['img_x'][:,1].max())
+print(sample_batch['img_x'][:,1].mean())
+
+print(sample_batch['img_x'][:,2].min())
+print(sample_batch['img_x'][:,2].max())
+print(sample_batch['img_x'][:,2].mean())
+```
+
+    tensor(-1.)
+    tensor(1.)
+    tensor(-0.1365)
+    tensor(-0.9765)
+    tensor(0.6784)
+    tensor(-0.0798)
+    tensor(-0.8980)
+    tensor(0.9765)
+    tensor(0.1079)
+    
 
 El dataset se dividió en 900 imágenes para entrenamiento y 100 imágenes para validación.
 
@@ -151,7 +178,7 @@ device = torch.device("cuda:0" if (torch.cuda.is_available() and ngpu > 0) else 
 
 Se probaron una variedad de modelos diferentes. Se usaron kernels de 3x3, de 5x5 y de 7x7, siendo estos últimos los que mejor resultados dieron. También se probaron diferentes configuraciones de red, añadiendo capas convolutivas y modificando las funciones de activación. Esta configuración resultó la más adecuada.
 
-En el proceso de entrenamiento se usaron gran variedad de combinaciones de tamaños de batches y de cantidad de épocas. Se empezó con tamaños de batch de 8, se fue subiendo hasta 150, dejando todavía 600 MB de espacio en GPU. En cuanto al número de épocas, se empezó con 10 iteraciones y se fue subiendo hasta la cantidad de 80. No obstante, al variar el learning rate se aceleró la convergencia, con lo que se bajó de nuevo a diez iteraciones.
+En el proceso de entrenamiento se usaron gran variedad de combinaciones de tamaños de batches y de cantidad de épocas. Se empezó con tamaños de batch de 8, se fue subiendo hasta 150, dejando todavía 600 MB de espacio en GPU. En cuanto al número de épocas, se empezó con 20 iteraciones y se fue subiendo hasta la cantidad de 80. No obstante, al variar el learning rate se aceleró la convergencia, con lo que se bajó de nuevo a veinte iteraciones.
 
 
 ```python
@@ -248,16 +275,26 @@ model, opt = get_model()
 fit(epochs, model, loss_func, opt, train_dl, valid_dl, val_losses)
 ```
 
-    0 0.08338125298420589
-    1 0.052146819109718
-    2 0.028755412126580875
-    3 0.02632518733541171
-    4 0.025659088355799515
-    5 0.02278409091134866
-    6 0.019602778367698193
-    7 0.017755256965756416
-    8 0.016962301917374134
-    9 0.016412056982517242
+    0 0.030665109244485695
+    1 0.04924736792842547
+    2 0.03206302598118782
+    3 0.024939381207029026
+    4 0.022622141676644485
+    5 0.01977396011352539
+    6 0.018246205213169258
+    7 0.017312584755321343
+    8 0.016450663097202778
+    9 0.01575897028669715
+    10 0.015210130562384924
+    11 0.01476207577312986
+    12 0.014425783728559812
+    13 0.014133546501398087
+    14 0.013891078221301237
+    15 0.013675572505841652
+    16 0.013469154325624308
+    17 0.013281429496904215
+    18 0.01309831952676177
+    19 0.012930736877024174
     
 
 Se puede observar en el gráfico que la red aprende bien.
@@ -277,10 +314,4 @@ Para finalizar, salvo el modelo para poder usarlo en el notebook [SR_Restore_Fac
 
 ```python
 torch.save(model, "SR_model_Faces_2.0.ml")
-```
-
-
-```javascript
-%%javascript
-Jupyter.notebook.session.delete();
 ```
