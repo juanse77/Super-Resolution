@@ -6,6 +6,8 @@ Ejercicio de curso para la asignatura de Computación Inteligente perteneciente 
 El ejercicio consiste en implementar un método de superresolución en imágenes basado en el método VDSR descrito en el artículo [Superresolución de una sola imagen mediante el aprendizaje profundo](https://es.mathworks.com/help/images/single-image-super-resolution-using-deep-learning.html). Concretamente, en este notebook se ha implementado un escalado de dos aumententos. El dataset usado fue el [ffhq-dataset](https://drive.google.com/drive/folders/1u2xu7bSrWxrbUxk-dT-UvEJq8IjdmNTP) de libre descarga. Las imgágenes usadas son las del conjunto 64000 con un tamaño para las imágenes de alta resolución de a 1024x1024, y de 128x128 para las de baja resolución. Para la realización de este ejercicio se ha reducido las imágenes de alta resolución a 256x256 de modo que serán las que se usarán como etiquetas de la red.
 
 
+![png](portada.png)
+
 
 ```python
 %matplotlib inline
@@ -27,7 +29,7 @@ Las imágenes se cargan de cuatro directorios. Las imágenes reales se situan en
 
 El programa se ejecutó en una máquina con un procesador Intel Core i7-7700HQ a 2.80GHz con una tarjeta de vídeo NVIDIA GeForce GTX 1050 de 4GB de memoria dedicada y con 32 GB de memoria RAM.
 
-![](Super_Resolution_CI_3.1.JPG)
+![](Equipo.JPG)
 
 
 ```python

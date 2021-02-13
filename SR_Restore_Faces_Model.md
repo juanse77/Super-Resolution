@@ -14,11 +14,7 @@ import torch
 from torchvision import datasets, transforms
 import torchvision.utils as vutils
 from torch.utils.data import DataLoader, Dataset
-import torch.nn.functional as F
-import numpy as np
 import torch.nn as nn
-import torch.optim as optim
-from torchvision.utils import save_image
 from pathlib import Path
 from os.path import join
 import torch.nn.functional as nnf
@@ -106,18 +102,18 @@ class FacesDataset(Dataset):
 
 
 ```python
-class Pil2YCbCr(object):
-    def __call__(self, img):
-        return img.convert('YCbCr')
-```
-
-
-```python
 def denormalize_Gauss(img):
     mean = torch.Tensor([0.5])
     std = 0.5
     
     return img * std + mean.expand_as(img)
+```
+
+
+```python
+class Pil2YCbCr(object):
+    def __call__(self, img):
+        return img.convert('YCbCr')
 ```
 
 
@@ -179,7 +175,8 @@ for xb in imgs_valid_dl:
     
     save_images(i, pil_imgs_sr)
     i += 1    
-```
+```  
+
 
 ```python
 transform = transforms.Compose([
@@ -200,16 +197,16 @@ plt.figure(figsize=(20, 20))
 plt.axis("off")
 plt.title("Super-resolution result")
 plt.imshow(grid_img.permute(1, 2, 0))
-#plt.imshow(grid_img)
 ```
 
 
 
 
-    <matplotlib.image.AxesImage at 0x1b70cadb548>
+    <matplotlib.image.AxesImage at 0x1f20ebbe288>
 
 
 
 
 ![png](output_15_1.png)
+
 
